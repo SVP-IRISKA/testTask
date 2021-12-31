@@ -1,0 +1,48 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+#root {
+  display: flex;
+  justify-content: center;
+}
+
+.app {
+  width: 800px;
+}
+
+.post {
+  position: relative;
+  padding: 20px;
+  border: 3px solid blue;
+  border-radius: 10px;
+  margin-top: 15px;
+}
+
+.post_description {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.post_title {
+  display: block;
+  margin-right: 15px;
+  font-size: 20px;
+  color: indigo;
+}
+
+.post_btn_del {
+  border: 2px solid red;
+  border-radius: 6px;
+  padding: 5px 10px;
+}
+
+.form_add_post {
+    border: 1px solid indigo;
+    border-radius: 4px;
+    margin: 4px;
+    padding: 4px;
+}
