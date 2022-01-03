@@ -9,19 +9,16 @@
   justify-content: center;
 }
 
-.app {
+.main {
   width: 800px;
 }
 
 .post {
   position: relative;
   padding: 20px;
-  border: 3px solid blue;
-  border-radius: 10px;
+  border: 2px solid blue;
+  border-radius: 8px;
   margin-top: 15px;
-}
-
-.post_description {
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -31,18 +28,31 @@
   display: block;
   margin-right: 15px;
   font-size: 20px;
-  color: indigo;
+  color: black;
 }
 
-.post_btn_del {
-  border: 2px solid red;
-  border-radius: 6px;
-  padding: 5px 10px;
+.post_text {
+  font-size: 15px;
+  color: grey;
 }
 
-.form_add_post {
-    border: 1px solid indigo;
-    border-radius: 4px;
-    margin: 4px;
-    padding: 4px;
+#form_add_post {
+margin-right: 0px;}
+
+#delete_post {
+  color: red;
 }
+
+.post_null {
+  text-align: center;
+  font-size: 20px;
+  color:red;
+  margin-top: 15px;
+}
+form {
+  position: relative;
+
+  display: flex;
+  justify-content: space-between;
+}
+

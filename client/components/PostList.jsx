@@ -1,24 +1,14 @@
 import React from 'react'
 
-const PostList = ({ posts }) => {
+import '../styles/main.css'
+import PostItem from './PostItem'
+
+const PostList = ({ posts, remove }) => {
   return (
     <div>
-      {posts.map((item) => {
-        return (
-          <div key={item.id} className="post">
-            <div className="post_description">
-              <h3 className="post_title">{item.title}</h3>
-
-              <div>{item.text}</div>
-              <div className="post_btn">
-                <button type="button" className="post_btn_del">
-                  Delete
-                </button>
-              </div>
-            </div>
-          </div>
-        )
-      })}
+      {posts.map((post, index) => (
+        <PostItem key={post.id} number={index + 1} post={post} remove={remove} />
+      ))}
     </div>
   )
 }
