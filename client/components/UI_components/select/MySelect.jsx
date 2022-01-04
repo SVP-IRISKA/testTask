@@ -11,7 +11,7 @@ const MySelect = ({
   return (
     <div>
       <select className={classStyle.mySelect} value={value} onChange={(e) => onChange(e.target.value)} id="">
-        <option disabled value="">{defaultSort}</option>
+        <option value="">{defaultSort}</option>
         {options.map((item) => (
           <option key={item.value} value={item.value}>
             {item.name}

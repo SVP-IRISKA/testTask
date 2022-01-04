@@ -4,6 +4,11 @@
   box-sizing: border-box;
 }
 
+hr {
+  color:grey;
+  margin: 5px 0px  ;
+  }
+
 #root {
   display: flex;
   justify-content: center;
@@ -55,4 +60,3 @@ form {
   display: flex;
   justify-content: space-between;
 }
-

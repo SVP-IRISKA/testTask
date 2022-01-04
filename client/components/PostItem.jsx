@@ -14,7 +14,8 @@ const PostItem = (props) => {
       <div className="post">
         <div className="post_title">
           {props.number}. {props.post.title}
-          <div className="post_text">{props.post.text}</div>
+          <hr />
+          <div className="post_text">{props.post.body}</div>
         </div>
         <MyButton onClick={removePost} id="delete_post">
           delete{' '}

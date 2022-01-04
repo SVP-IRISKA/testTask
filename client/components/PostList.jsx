@@ -4,6 +4,9 @@ import '../styles/main.css'
 import PostItem from './PostItem'
 
 const PostList = ({ posts, remove }) => {
+  if (!posts.length) {
+    return <div className="post_null">No posts</div>
+  }
   return (
     <div>
       {posts.map((post, index) => (

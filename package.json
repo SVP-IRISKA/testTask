@@ -23,6 +23,7 @@
     "@babel/preset-react": "^7.16.5",
     "@babel/register": "^7.16.5",
     "@babel/runtime": "^7.16.5",
+    "axios": "^0.24.0",
     "babel-loader": "^8.2.2",
     "connected-react-router": "^6.9.2",
     "cookie-parser": "^1.4.6",

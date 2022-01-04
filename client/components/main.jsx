@@ -1,53 +1,39 @@
-import React, { useState, useMemo } from 'react'
+import React, { useState, useEffect } from 'react'
+// import axios from 'axios'
+
+import FilterPost from './FilterPost'
 import PostForm from './PostForm'
 import PostList from './PostList'
-import MyInput from './UI_components/input/MyInput'
-import MySelect from './UI_components/select/MySelect'
+
+import PostGetAPI from './API/PostGetAPI'
+
+import { usePost } from '../hooks/usePosts'
+import MyLoader from './UI_components/Loader/MyLoader'
 
 // import Head from './head'
 
 const Main = () => {
-  const initialPost = [
-    {
-      id: 1,
-      title: 'AAAA',
-      text: 'uuuuu Lorem ipsum dolor sit, amet consectetur adipisicing elit. Earum quasi doaxime ea.'
-    },
-    {
-      id: 2,
-      title: 'ppppp',
-      text: 'KKKLorem ipsum dolor sit, amet consectetur adipisicing elit. Earum quasi doloribus labore enim '
-    },
-    {
-      id: 3,
-      title: 'DDDDDD',
-      text: 'aaaaa ipsum dolor sit, amet consectetur adipisicing elit'
-    }
-  ]
-
   const optionsSort = [
     { value: 'title', name: '...by title' },
-    { value: 'text', name: '...by text' }
+    { value: 'body', name: '...by body' }
   ]
 
-  const [posts, setPosts] = useState(initialPost)
-  const [selectSort, setSelectSort] = useState('')
-  const [searchPost, setSearchPost] = useState('')
+  const [posts, setPosts] = useState([])
+  const [filter, setFilter] = useState({ sort: '', search: '' })
+  const [isPostsLoading, setIsPostsLoading] = useState(false)
 
-  const sortedPosts = useMemo(() => {
-    if (selectSort) {
-      return [...posts].sort((a, b) => a[selectSort].localeCompare(b[selectSort]))
-    }
-    return posts
-  }, [selectSort, posts])
+  const sortSearchPosts = usePost(posts, filter.sort, filter.search)
 
-  const sortSearchPosts = useMemo(() => {
-    return sortedPosts.filter((item) => item.title.toLowerCase().includes(searchPost))
-  }, [searchPost, sortedPosts])
-
-  const getSearchChangeInput = (e) => {
-    setSearchPost(e.target.value)
+  const getPosts = async () => {
+    setIsPostsLoading(true)
+    const post = await PostGetAPI.getAPI()
+    setPosts(post.slice(0, 10))
+    setIsPostsLoading(false)
   }
+
+  useEffect(() => {
+    getPosts()
+  }, [])
 
   const createPost = (newPost) => {
     setPosts([...posts, newPost])
@@ -56,27 +42,16 @@ const Main = () => {
     setPosts(posts.filter((item) => item.id !== post.id))
   }
 
-  const postSort = (bySort) => {
-    setSelectSort(bySort)
-  }
-
   return (
     <div>
       <div className="main">
         <PostForm create={createPost} />
-        <div>
-          <MyInput placeholder="search..." value={searchPost} onChange={getSearchChangeInput} />
-          <MySelect
-            defaultSort="Sorting by..."
-            options={optionsSort}
-            value={selectSort}
-            onChange={postSort}
-          />
-        </div>
-        {sortSearchPosts.length ? (
-          <PostList posts={sortSearchPosts} setPosts={setPosts} remove={removePost} />
+        <FilterPost filter={filter} setFilter={setFilter} optionsSort={optionsSort} />
+
+        {isPostsLoading ? (
+          <MyLoader />
         ) : (
-          <div className="post_null">No posts</div>
+          <PostList posts={sortSearchPosts} setPosts={setPosts} remove={removePost} />
         )}
       </div>
     </div>

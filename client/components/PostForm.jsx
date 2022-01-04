@@ -4,34 +4,25 @@ import MyButton from './UI_components/button/MyButton'
 import MyInput from './UI_components/input/MyInput'
 
 const PostForm = ({ create }) => {
-  const [post, setPost] = useState({ title: '', text: '' })
+  const [post, setPost] = useState({ title: '', body: '' })
 
   const addNewPost = (e) => {
     e.preventDefault()
-    // console.log('e', typeof e.target.value)
-    if (post.title !== '' && post.text !== '') {
-      const newPost = { ...post, id: Date.now(), title: post.title.toUpperCase() }
+    if (post.title !== '' && post.body !== '') {
+      const newPost = { ...post, id: Date.now(), title: post.title }
       create(newPost)
-      setPost({ title: '', text: '' })
+      setPost({ title: '', body: '' })
     } else {
       setPost({ ...post })
-      // setPost({ title: '', text: '' })
     }
   }
-
-  // const addNewPost = (e) => {
-  //   e.preventDefault()
-  //   const newPost = { ...post, id: Date.now() }
-  //   create(newPost)
-  //   setPost({ title: '', text: '' })
-  // }
 
   const addTitle = (e) => {
     setPost({ ...post, title: e.target.value })
   }
 
   const addText = (e) => {
-    setPost({ ...post, text: e.target.value })
+    setPost({ ...post, body: e.target.value })
   }
 
   return (
@@ -42,11 +33,11 @@ const PostForm = ({ create }) => {
             value={post.title}
             onChange={addTitle}
             className="form_add_post"
-            type="text"
+            type="body"
             placeholder="heading"
           />
           <MyInput
-            value={post.text}
+            value={post.body}
             onChange={addText}
             className="form_add_post"
             type="text"

@@ -1,0 +1,64 @@
+.load_wrapp {
+    width: 1200px;
+    height: 100px;
+    margin: 10px 10px 10px 10px;
+    padding: 20px 20px 20px;
+    text-align: center;
+  }
+  
+  .letter_holder {
+    padding: 16px;
+  }
+  
+  .letter {
+    display: flex;
+    justify-content: start;
+    font-size: 28px;
+    color: red;
+  }
+
+.load  {
+  animation-name: loadingF;
+  animation-duration: 1.6s;
+  animation-iteration-count: infinite;
+  animation-direction: linear;
+}
+.letter .l_1 {
+  animation-delay: 0.48s;
+}
+.letter .l_2 {
+  animation-delay: 0.6s;
+}
+.letter .l_3 {
+  animation-delay: 0.72s;
+}
+.letter .l_4 {
+  animation-delay: 0.84s;
+}
+.letter .l_5 {
+  animation-delay: 0.96s;
+}
+.letter .l_6 {
+  animation-delay: 1.08s;
+}
+.letter .l_7 {
+  animation-delay: 1.2s;
+}
+.letter .l_8 {
+  animation-delay: 1.32s;
+}
+.letter .l_9 {
+  animation-delay: 1.44s;
+}
+.letter .l_10 {
+  animation-delay: 1.56s;
+}
+
+@keyframes loadingF {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
