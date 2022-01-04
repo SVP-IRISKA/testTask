@@ -1,3 +1,18 @@
+К 10.01.2022
+
+По заданию:
+useState
+useEffect
+useMemo
+custom hooks
+CSSmodule
+UIcomponents
+форма
+сортировка
+добавление\удаление элемента
+стороннее API
+
+
 # MERN boilerplate
 Client/Server boilerplate for pet-projects
 
