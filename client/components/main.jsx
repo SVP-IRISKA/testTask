@@ -1,8 +1,8 @@
-import React, { useState, useEffect } from 'react'
+import React, { useState, useEffect, Suspense } from 'react'
 // import axios from 'axios'
 
 import FilterPost from './FilterPost'
-import PostForm from './PostForm'
+// import PostForm from './PostForm'
 import PostList from './PostList'
 
 import PostGetAPI from './API/PostGetAPI'
@@ -42,12 +42,19 @@ const Main = () => {
     setPosts(posts.filter((item) => item.id !== post.id))
   }
 
+  const PostForm = React.lazy(() => import('./PostForm'))
+  const PostFormSuspension = () => (
+    <Suspense fallback={<MyLoader />}>
+      <PostForm create={createPost} />
+    </Suspense>
+  )
+
   return (
     <div>
       <div className="main">
-        <PostForm create={createPost} />
+        <h1>Notebook of posts</h1>
+        <PostFormSuspension />
         <FilterPost filter={filter} setFilter={setFilter} optionsSort={optionsSort} />
-
         {isPostsLoading ? (
           <MyLoader />
         ) : (
